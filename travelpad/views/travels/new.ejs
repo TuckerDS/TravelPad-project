@@ -1,0 +1,20 @@
+
+<div class="container">
+  <form action="/travels"  method="post">
+    <div><label for="title">Title: </label><input type="text" placeholder="Introduce a title..." name="title"></div>
+    <div><label for="description">Description: </label><input type="text" placeholder="Introduce a description..." name="description"></div>
+    <div><label for="travelDate">Date: </label><input type="date" placeholder="Introduce a date.." name="travelDate" value='<%=new Date().toLocaleDateString("es-ES");%>'></div>
+    <div>
+      <label for="country">Countries</label>
+      <select name="country" id="country">
+        <% countries.forEach( (country) => { %>
+        <option type="text" value="<%=country%>"><%= country %></option>
+        <% }) %>
+      </select>
+
+    </div>
+    <div>
+          <button type="submit">Create new Travel</button>
+    </div>
+  </form>
+</div>

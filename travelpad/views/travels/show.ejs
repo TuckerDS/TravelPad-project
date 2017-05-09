@@ -1,0 +1,14 @@
+<div class="container">
+  <% travels.forEach( (travel) => {%>
+    <div class="travel_list">
+      <h3><%=travel.title %></h3> <a href="/travels/<%=travel.id%>">Remove</a>
+      <ul>
+        <li><%=travel.description%>
+        <li><%=travel.travelDate%>
+        <li><%=travel.countries%>
+      </ul>
+    </div>
+  <% }) %>
+<div>
+  <a href="/travels/new">Add new</a>
+</div>

@@ -26,17 +26,17 @@ Crea de forma rápida una anotación, no pierdas el tiempo en preguntar donde es
 - CRUD de Users.
 - CRUD de Travels.
 - CRUD de Pads.
-- Vista de información (detalle) de users, travels y pads
+- Vista de información (detalle) de users, travels y pads.
 
 ###Iteración 2
 - Subir imagen a los pads, y al avatar de usuario.
 - Pads privados o públicos.
 - Geolocalización.
 - Añadir más paises.
-- Embeber web en aplicación android
+- Embeber web en aplicación android.
 
 ###Algún día
-- Añadir lista de travels favoritos
-- Añadir más imagenes a un pad
+- Añadir lista de travels favoritos.
+- Añadir más imagenes a un pad.
 - Busqueda por paises.
-- 
+- Lista de favoritos.
