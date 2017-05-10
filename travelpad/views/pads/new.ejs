@@ -4,6 +4,7 @@
     <form  action="/pads"  method="post" enctype="multipart/form-data">
       <div class="field"><label for="title">Title: </label><input type="text" placeholder="Introduce a title..." name="title"></div>
       <div class="field"><label for="description">Description: </label><input type="text" placeholder="Introduce a description..." name="description"></div>
+      <div class="field"><label for="visible">Visible: </label><input type="checkbox" name="visible"></div>
       <div class="field"><label for="country">Countries</label>
         <select name="country" id="country">
           <% countries.forEach( (country) => { %>
@@ -12,28 +13,18 @@
         </select>
       </div>
       <div class="field">
-        <input type="file" name="photo">
+        <img id="img" src="/images/camera-640-w.png" onclick="upload()" alt="hello"/>
+        <input id='camera' type="file" hidden='hidden' accept="image/*" onchange="change()" capture="camera" name="photo">
       </div>
-      <div class="field"><img id="img" src="/images/camera-640-w.png" onclick="upload()" alt="hello"/><input id='camera' type="file" accept="image/*" onchange="change()" capture="camera"> </div>
       <div class="field"><input id="filename" type="text"></input></div>
       <input type="text" name="travelId" value="<%=travelId%>">
       <div class="field"><label for="location">Location</label>
-        <div><label for="lng">Longitud: </label><input type="text" placeholder="Longitud" name="lng"></div>
-        <div><label for="lat">Latitud: </label><input type="text" placeholder="Latitud" name="lat"></div>
+        <div><label for="lng">Longitud: </label><input type="text" placeholder="Longitud" id="lng" name="lng"></div>
+        <div><label for="lat">Latitud: </label><input type="text" placeholder="Latitud" id="lat" name="lat"></div>
       </div>
       <div class="field"><button type="submit">Create new Pad</button></div>
     </form>
   </div>
-
 </div>
-
-<script>
-function upload(){
-  document.getElementById("camera").click();
- }
-
-function change() {
-  alert(document.getElementById("camera").value);
-  document.getElementById("filename").value = document.getElementById("camera").value ;
-}
+<script src="/javascripts/pads.js">
 </script>
