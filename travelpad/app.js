@@ -24,7 +24,6 @@ app.set('layout', 'layouts/main-layout');
 
 
 const User       = require("./models/user");
-mongoose.connect("mongodb://localhost/passport-local");
 
 // Requiring Facebook and google account authentication
 const FbStrategy = require('passport-facebook').Strategy;
