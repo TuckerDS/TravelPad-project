@@ -22,6 +22,7 @@ router.post('/', upload.single('photo'), (req, res, next) => {
     description: req.body.description,
     country: req.body.country,
     location: {type: "Point", coordinates: [req.body.lng, req.body.lat]},
+    visible: req.body.visible,
     pic_name: req.file.originalname,
     pic_path: `/uploads/${req.file.filename}`,
     _travelId : req.body.travelId

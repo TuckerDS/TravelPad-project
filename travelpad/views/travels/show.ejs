@@ -1,20 +1,29 @@
 <div class="container">
   <% travels.forEach( (travel) => {%>
     <div class="travel_list" id="<%=travel._id%>">
+      <div class=travelText>
         <div class="title"><%=travel.title %></div>
         <div class="description"><%=travel.description%></div>
-        <div class="travelDate"><%=travel.travelDate%></div>
+        <div class="travelDate"><%=travel.travelDateFormated%></div>
         <div class="countries"><%=travel.countries%></div>
-        <a href="/pads/new/<%=travel._id%>"><button value="<%=travel._id%>" class="btnAddPad">    </button></a>
-        <button value="<%=travel._id%>" class="btnDelete">Remove</button>
+        <div>
+          <a href="/pads/new/<%=travel._id%>">
+          <button value="<%=travel._id%>" class="btnAddPad">New Pad</button></a>
+        </div>
+
+        <div><button value="<%=travel._id%>" class="btnDelete">Remove</button></div>
+        <div class="ribbon"></div>
+      </div>
+
     </div>
   <% }) %>
-<div>
-  <a href="/travels/new">Add new</a>
+
+  <div>
+    <a href="/travels/new">Add new</a>
+  </div>
 </div>
 <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
-
-    <script src="/javascripts/travels.js"></script>
+<script src="/javascripts/travels.js"></script>
