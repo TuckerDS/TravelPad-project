@@ -14,20 +14,47 @@ h1, h2, h3 {
   width: 100%;
   font-family: "Kalam";
   align-content: center;
+
 }
 
 .travel_list {
-  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 200px;
+  height: 400px;
   border-radius: 5px;
-  margin: 10px;
+  margin: auto;
   padding: 10px;
   font-family: "Kalam";
-  background-color: rgba(0, 0, 0, 0.7);
+  background-image: url(/images/mole.png);
+  background-size:cover;
   color: #EEEEEE;
 }
-h1{
-     
+
+.title {
+  width: 100px;
+  color: rgba(255,255,255,0.8);
+  font-size: 18px;
+  margin: 10px;
 }
+
+.description {
+  border-radius: 5px;
+  width: 100px;
+  margin: 10px;
+  font-size: 12px;
+  background-color: rgba(255,255,255,0.8);
+  color: rgba(0,0,0,0.8);
+  padding: 10px;
+}
+
+.travelDate {
+
+  margin: 10px;
+  color: gold;
+  font-size: 12px;
+}
+
 a {
   color: #00B7FF;
 }
