@@ -1,12 +1,11 @@
 /*jshint esversion: 6*/
 const express   = require('express');
-const Pads   = require('../models/padModel');
+const Pads      = require('../models/padModel');
 const COUNTRIES = require('../models/countries');
 const ObjectId  = require('mongoose').Types.ObjectId;
 const router    = express.Router();
-const multer  = require('multer');
+const multer    = require('multer');
 let upload = multer({ dest: './public/uploads/' });
-
 
 //const { ensureLoggedIn }  = require('connect-ensure-login');
 
@@ -40,7 +39,6 @@ router.post('/', upload.single('photo'), (req, res, next) => {
 });
 
 router.get('/:id', (req, res) => {
-
   //let travelId = req.params.id;
   //console.log("TRAVELID " + travelId);
   res.render('pads/index');

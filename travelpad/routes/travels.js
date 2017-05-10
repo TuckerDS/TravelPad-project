@@ -7,7 +7,9 @@ const router    = express.Router();
 
 const { ensureLoggedIn }  = require('connect-ensure-login');
 
-router.get('/', (req, res, next) => {
+router.get('/', ensureLoggedIn('/login'), (req, res, next) => {
+  const user = req.user;
+  console.log(user);
   Travels.find({}).exec( (err, travels) => {
     res.render('travels/show', { travels });
   });
