@@ -1,0 +1,27 @@
+
+<div class="container">
+  <% travels.forEach( (travel) => {%>
+    <div class="travel_list" id="<%=pad._id%>">
+        <div class="title"><%=pad.title %></div>
+        <div class="description"><%=pad.description%></div>
+        <div class="travelDate"><%=pad.travelDate%></div>
+        <div class="country"><%=pad.country%></div>
+        <section>
+          <h3><%= pad.pic_name %></h3>
+          <img src="<%= pad.pic_path %>" alt="<%= pad.pic_name %>" />
+
+        </section>
+
+        <button value="<%=pad._id%>" class="btnDelete">Remove</button>
+
+    </div>
+  <% }) %>
+<div>
+  <a href="/pads/new">Add new</a>
+</div>
+<script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+
+    <script src="/javascripts/travels.js"></script>

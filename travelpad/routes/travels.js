@@ -5,7 +5,7 @@ const COUNTRIES = require('../models/countries');
 const ObjectId  = require('mongoose').Types.ObjectId;
 const router    = express.Router();
 
-//const { ensureLoggedIn }  = require('connect-ensure-login');
+const { ensureLoggedIn }  = require('connect-ensure-login');
 
 router.get('/', (req, res, next) => {
   Travels.find({}).exec( (err, travels) => {
@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
   const newTravel = new Travels( {
     title: req.body.title,
     description: req.body.description,
@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
 
   newTravel.save( (err) => {
     if (err) {
-      res.render('travels/new', { campaign: newTravel, countries: COUNTRIES });
+      res.render('travels/new', { travel: newTravel, countries: COUNTRIES });
     } else {
       res.redirect('/travels');
       //res.redirect(`/travel/${newTravel._id}`);
@@ -32,9 +32,27 @@ router.post('/', (req, res, next) => {
   });
 });
 
-router.get('/new', (req, res) => {
+router.get('/new', ensureLoggedIn('/login'), (req, res) => {
   res.render('travels/new', { countries: COUNTRIES });
   //res.render('travels/new');
 });
+
+router.delete('/:id', (req, res, next) => {
+  let id = req.params.id;
+  Travels.findByIdAndRemove({_id: id}, (err, product) => {
+  if (err){
+    return next(err);
+  } else {
+    //console.log(res);
+    //return next(res);
+    console.log("llego a ok");
+    res.status(200).send();
+   //return res.redirect('/travels');
+   //return res.render('/travels/show');
+  }
+  });
+  //res.render('travels/new');
+});
+
 
 module.exports = router;

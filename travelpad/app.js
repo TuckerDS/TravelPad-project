@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const travels = require('./routes/travels');
+const pads = require('./routes/pads');
 const app = express();
 //layouts
 const expressLayouts = require('express-ejs-layouts');
@@ -21,7 +22,6 @@ mongoose.connect('mongodb://localhost/travelpad');
 //configure layouts
 app.use(expressLayouts);
 app.set('layout', 'layouts/main-layout');
-
 
 const User       = require("./models/user");
 
@@ -94,6 +94,7 @@ app.set('view engine', 'ejs');
 app.use('/', index);
 app.use('/users', users);
 app.use('/travels', travels);
+app.use('/pads', pads);
 
 
 // catch 404 and forward to error handler
