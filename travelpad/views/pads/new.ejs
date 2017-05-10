@@ -12,28 +12,31 @@
         </select>
       </div>
       <div class="field">
-        <input type="file" name="photo">
+        <img id="img" src="/images/camera-640-w.png" onclick="upload()" alt="hello"/>
+        <input id='camera' type="file" hidden='hidden' accept="image/*" onchange="change()" capture="camera" name="photo">
       </div>
-      <div class="field"><img id="img" src="/images/camera-640-w.png" onclick="upload()" alt="hello"/><input id='camera' type="file" accept="image/*" onchange="change()" capture="camera"> </div>
       <div class="field"><input id="filename" type="text"></input></div>
       <input type="text" name="travelId" value="<%=travelId%>">
       <div class="field"><label for="location">Location</label>
-        <div><label for="lng">Longitud: </label><input type="text" placeholder="Longitud" name="lng"></div>
-        <div><label for="lat">Latitud: </label><input type="text" placeholder="Latitud" name="lat"></div>
+        <div><label for="lng">Longitud: </label><input type="text" placeholder="Longitud" id="lng" name="lng"></div>
+        <div><label for="lat">Latitud: </label><input type="text" placeholder="Latitud" id="lat" name="lat"></div>
       </div>
+      <!-- Longitud es la que empieza con -3 (línea 27)y latitud es la que empieza con 40(línea 31).-->
+      
+      <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7228.459081745952!2d
+
+      -3.706797890141597
+
+      !3d
+
+      40.38242235094163
+
+      !3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ses!4v1494451012470"  allowfullscreen></iframe>
       <div class="field"><button type="submit">Create new Pad</button></div>
+
     </form>
   </div>
 
 </div>
-
-<script>
-function upload(){
-  document.getElementById("camera").click();
- }
-
-function change() {
-  alert(document.getElementById("camera").value);
-  document.getElementById("filename").value = document.getElementById("camera").value ;
-}
+<script src="/javascripts/pads.js">
 </script>
