@@ -19,7 +19,7 @@ $('.btnDelete' ).click(function(e) {
   $.ajax({
       url: '/travels/'+id,
       type: 'DELETE',
-      success: function(result){window.location.reload()},
+      success: function(result){window.location.reload();},
       error: function(result){alert("error");}
   });
 
