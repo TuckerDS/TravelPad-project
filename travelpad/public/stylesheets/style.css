@@ -8,6 +8,10 @@ body {
 h1, h2, h3 {
   font-family: "Kalam";
   font-weight: bold;
+  position: relative;
+  bottom: 60px;
+  right: 20px;
+  font-size: 45px;
 }
 
 .containter * {
