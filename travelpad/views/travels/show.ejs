@@ -10,9 +10,10 @@
         <div>
           <a href="/pads/new/<%=travel._id%>">
           <button value="<%=travel._id%>" class="btnAddPad">New Pad</button></a>
+          <a href="/travels/<%=travel._id%>">
+          <img class="icon" src="/images/eye-w.png" alt="View details"></a>
+          <button class="icon" value="<%=travel._id%>" class="btnDelete"><img class="icon" src="/images/trash-640-w.png" alt=""></button>
         </div>
-
-        <div><button value="<%=travel._id%>" class="btnDelete">Remove</button></div>
         <div class="ribbon"></div>
       </div>
 

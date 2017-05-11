@@ -35,7 +35,7 @@ router.post('/', upload.single('photo'), (req, res, next) => {
       console.log(err);
       res.render('pads/new', { pad: newPad, countries: COUNTRIES });
     } else {
-      res.redirect('/pads/'+newPad._travelId);
+      res.redirect('/travels/'+newPad._travelId);
       //res.redirect(`/travel/${newTravel._id}`);
     }
   });
