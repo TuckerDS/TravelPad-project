@@ -22,13 +22,23 @@
         <div><label for="lng">Longitud: </label><input type="text" placeholder="Longitud" id="lng" name="lng"></div>
         <div><label for="lat">Latitud: </label><input type="text" placeholder="Latitud" id="lat" name="lat"></div>
       </div>
-      <!-- Longitud es la que empieza con -3 (línea 27)y latitud es la que empieza con 40(línea 31).-->
-
-      <iframe id="map" src=""  allowfullscreen></iframe>
+      <style>
+        #map {
+         height: 200px;
+         width: 540px;
+        }
+     </style>
+      <div id="map"></div>
       <div class="field"><button type="submit">Create new Pad</button></div>
-
     </form>
   </div>
 </div>
-<script src="/javascripts/pads.js">
+
+
+
+<script src="/javascripts/pads.js"></script>
+<script
+  async
+  defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1-FvA8KZvDu_L8hQzdI0cGVNQHqxtrD0">
 </script>

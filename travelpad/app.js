@@ -137,7 +137,7 @@ passport.use(new FbStrategy({
    }
   });
 }));
-
+//username: profile.emails[0].value  googleID: profile.id
 passport.serializeUser((user, next) => {
   next(null, user);
 });
@@ -149,8 +149,7 @@ passport.use(new GoogleStrategy({
   clientSecret: "wX3HmAMbnufq3B1uekSPRDbR",
   callbackURL: "http://localhost:3000/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => {
-     console.log("hola");
-  User.findOne({ googleID: profile.id }, (err, user) => {
+  User.findOne({ username: profile.emails[0].value }, (err, user) => {
     if (user === null){
       var newUser = new User({
         username: profile.emails[0].value,
