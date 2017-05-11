@@ -59,21 +59,14 @@ router.get('/:id', ensureLoggedIn('/login'), (req, res, next) => {
   Travels.find({_id: id})
   .populate('_userId')
   .exec( (err, travels) => {
-    console.log(travels[0]._userId._id + "=="+ req.user._id);
     if (travels[0]._userId._id+"" == req.user._id+""){
-      console.log("coincide el usuario");
       Pads.find({'_travelId': id})
       .exec( (err, pads) => {
-        console.log(pads);
-        console.log(travels);
         res.render('travels/detail', { travels: travels, pads: pads});
       });
     }else{
-      console.log("NO coincide el usuario");
       Pads.find({'_travelId': id, visible: true})
       .exec( (err, pads) => {
-        console.log(pads);
-        console.log(travels);
         res.render('travels/detail', { travels: travels, pads: pads});
       });
     }
@@ -87,9 +80,10 @@ router.delete('/:id', (req, res, next) => {
   if (err){
     return next(err);
   } else {
-    //console.log(res);
+    Pads.remove({'_travelId': id}).exec();
+
     //return next(res);
-    console.log("llego a ok");
+
     res.status(200).send();
    //return res.redirect('/travels');
    //return res.render('/travels/show');

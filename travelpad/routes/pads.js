@@ -53,7 +53,7 @@ router.get('/new/:id', (req, res) => {
   res.render('pads/new', { countries: COUNTRIES, travelId:travelId});
 });
 
-router.delete('/:id', (req, res, next) => {
+router.get('/delete/:id', (req, res, next) => {
   let id = req.params.id;
   Pads.findByIdAndRemove(id, (err, product) => {
   if (err){
@@ -61,7 +61,7 @@ router.delete('/:id', (req, res, next) => {
   } else {
     //console.log(res);
     //return next(res);
-   return res.redirect('/pads/show');
+   return res.redirect('/travels/detail');
    //return res.render('/travels/show');
   }
   });
