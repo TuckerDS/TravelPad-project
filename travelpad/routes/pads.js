@@ -17,12 +17,14 @@ router.get('/', (req, res, next) => {
 
 router.post('/', upload.single('photo'), (req, res, next) => {
   console.log(req.body);
+  console.log("visible:" + req.body.visible+"-");
+  let visibility = req.body.visible ? true : false;
   const newPad = new Pads( {
     title: req.body.title,
     description: req.body.description,
     country: req.body.country,
     location: {type: "Point", coordinates: [req.body.lng, req.body.lat]},
-    visible: req.body.visible,
+    visible: visibility,
     pic_name: req.file.originalname,
     pic_path: `/uploads/${req.file.filename}`,
     _travelId : req.body.travelId

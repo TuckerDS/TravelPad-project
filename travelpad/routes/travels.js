@@ -1,6 +1,7 @@
 /*jshint esversion: 6*/
 const express   = require('express');
 const Travels    = require('../models/travelModel');
+const Pads    = require('../models/padModel');
 const COUNTRIES = require('../models/countries');
 const ObjectId  = require('mongoose').Types.ObjectId;
 const router    = express.Router();
@@ -10,10 +11,23 @@ const { ensureLoggedIn }  = require('connect-ensure-login');
 router.get('/', ensureLoggedIn('/login'), (req, res, next) => {
   const user = req.user;
   console.log(user);
-  Travels.find({}).exec( (err, travels) => {
+  Travels.find({})
+  .populate('_userId')
+  .exec( (err, travels) => {
     res.render('travels/show', { travels });
   });
 });
+
+router.get('/mytravels', ensureLoggedIn('/login'), (req, res, next) => {
+  const user = req.user;
+  console.log(user);
+  Travels.find({_userId: req.user._id})
+  .populate('_userId')
+  .exec( (err, travels) => {
+    res.render('travels/show', { travels });
+  });
+});
+
 
 router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
   const newTravel = new Travels( {
@@ -21,7 +35,7 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
     description: req.body.description,
     travelDate: new Date(req.body.travelDate),
     countries: req.body.country,
-    _userId : new ObjectId(req.param(1))
+    _userId : req.user._id
   });
 
   newTravel.save( (err) => {
@@ -35,8 +49,36 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
 });
 
 router.get('/new', ensureLoggedIn('/login'), (req, res) => {
+  console.log("User ID: "+req.user);
   res.render('travels/new', { countries: COUNTRIES });
   //res.render('travels/new');
+});
+router.get('/:id', ensureLoggedIn('/login'), (req, res, next) => {
+  let id = req.params.id;
+  let tra;
+  Travels.find({_id: id})
+  .populate('_userId')
+  .exec( (err, travels) => {
+    console.log(travels[0]._userId._id + "=="+ req.user._id);
+    if (travels[0]._userId._id+"" == req.user._id+""){
+      console.log("coincide el usuario");
+      Pads.find({'_travelId': id})
+      .exec( (err, pads) => {
+        console.log(pads);
+        console.log(travels);
+        res.render('travels/detail', { travels: travels, pads: pads});
+      });
+    }else{
+      console.log("NO coincide el usuario");
+      Pads.find({'_travelId': id, visible: true})
+      .exec( (err, pads) => {
+        console.log(pads);
+        console.log(travels);
+        res.render('travels/detail', { travels: travels, pads: pads});
+      });
+    }
+
+  });
 });
 
 router.delete('/:id', (req, res, next) => {

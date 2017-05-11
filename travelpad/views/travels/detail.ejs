@@ -18,6 +18,25 @@
 
     </div>
   <% }) %>
+  <%
+    if (pads) { %>
+    <div class="padsContainer">
+
+    <% pads.forEach( (pad) => {%>
+      <div class="pads">
+      <div><%=pad.title %></div>
+      <div><%=pad.description %></div>
+      <div>Localizacion</div>
+      <div><%=pad.location.coordinates[0] %></div>
+      <div><%=pad.location.coordinates[1] %></div>
+      <div class="image">
+        <img src="<%=pad.pic_path%>" alt="<%=pad.pic_name%>">
+      </div>
+      </div>
+    <% }) %>
+
+  </div>
+  <% } %>
 
   <div>
     <a href="/travels/new">Add new</a>
