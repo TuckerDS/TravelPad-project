@@ -3,6 +3,7 @@
 # TravelPad
 
 ![TravelPad Logo](./README/TravelPad_Icon_300.png)
+
 Cuaderno de viaje minimalista y rápido, donde guardar los sitios que visitas, georeferenciados, comentados e ilustrados, para volver a ellos cuando desees y compartirlo con tus amigos y otros usuarios.
 
 Si te a pasado visitar un pub, restaurante, etc... y tener que buscar donde apuntar su dirección, y una referencia de porqué quieres volver a él, y además tomar una foto para recordarlo y se te ha complicado la vida utilizando google maps, notas y la camara para anotarlo, esta es la aplicación que necesitas.
