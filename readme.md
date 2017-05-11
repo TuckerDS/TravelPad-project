@@ -1,6 +1,6 @@
 ![Ironhack Logo](https://i.imgur.com/1QgrNNw.png)
 
-#TravelPad
+# TravelPad
 
 ![TravelPad Logo](./README/TravelPad_Icon_300.png)
 Cuaderno de viaje minimalista y rápido, donde guardar los sitios que visitas, georeferenciados, comentados e ilustrados, para volver a ellos cuando desees y compartirlo con tus amigos y otros usuarios.
@@ -11,14 +11,14 @@ Si además te ha pasado que dspués de tu viaje un amigo o familiar te ha pregun
 
 Y si además te ha pasado querer tu viaje, y tirar de memoria, galerias de fotos y demás, y te gustaría hacerlo de forma sencilla y además por conpartirlo en las redes sociales, esta es tu aplicación.
 
-##Travels
+## Travels
 
 Tus viajes, reducido a la mínima expresión, porque menos es más.
 Puedes crear un nuevo viaje y hacer una paqueña, o no tan pequeña descripción de tu viaje, ponerle fecha, y listar los paises que vas a visitar. Eso ayudará a otros a buscar "tu travel" para usarlo de referencia.
 
 Un travel es como un cuaderno de viaje.
 
-##Pads
+## Pads
 Crea de forma rápida una anotación, no pierdas el tiempo en preguntar donde estas, simplemente crea un pad geolocalizado automaticamente y ponle título, y si quieres añade una descripción más extensa y una foto, y marca si esta visita sera visible para el resto. La fecha y hora se guardará automaticamente. ;)
 
 ##Iteraciones
