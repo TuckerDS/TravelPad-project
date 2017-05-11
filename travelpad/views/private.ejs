@@ -1,11 +1,11 @@
-Private page
 <% if (user) { %>
+<!--
   <div>
     <a href="/">Index</a>
   </div>
    <a href="/logout">Log out</a>
-
-   <div><%=user.id%></div>
+-->
+  <h1>Welcome, <%=user.username%></h1>
   <a href="/travels/new">New travel</a>
   <br>
   <a href="/travels/mytravels">My travels</a>

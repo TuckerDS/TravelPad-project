@@ -7,7 +7,14 @@
     <link href="https://fonts.googleapis.com/css?family=Caveat|Kalam" rel="stylesheet">
   </head>
   <body>
-    <header>TravelPad</header>
+    <header>TravelPad
+    <% if (user != undefined) { %>
+      <a href="/logout">Logout</a>
+    <%} else {%>
+      <a href="/signup">Signup</a>
+      <a href="/login">Log In</a>
+    <% } %>
+    </header>
     <%- body -%> <!-- <=== note this line -->
   </body>
 </html>

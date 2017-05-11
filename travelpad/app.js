@@ -80,6 +80,14 @@ passport.use(new LocalStrategy({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Send objct user from req to res
+app.use(function(req, res, next){
+  res.locals.user = req.user;
+  //res.locals.authenticated = ! req.user.anonymous;
+  next();
+});
+
+
 const authRoutes = require("./routes/auth-routes");
 app.use('/', authRoutes);
 
