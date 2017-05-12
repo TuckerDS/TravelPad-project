@@ -1,0 +1,53 @@
+<header><div class="logo"> <img src="/favicon.gif" alt=""> <span>TravelPad</span></div>
+  <div class="logNav">
+<% if (user != undefined) { %>
+  <%=user.username%> /
+  <a href="/logout">Logout</a>
+<%} else {%>
+  <a href="/login">Login</a> /
+  <a href="/signup">Signup</a>
+<% } %>
+  </div>
+  <div style="clear: both;"></div>
+</header>
+<div>
+<span class="menu"><a href="/travels/new">New travel</a></span>
+<span class="menu"><a href="/travels/mytravels">My travels</a></span>
+<span class="menu"><a href="/travels">Travels List</a></span>
+</div>
+
+<div class="container">
+  <% travels.forEach( (travel) => {%>
+    <div class="travel_list" id="<%=travel._id%>">
+      <div class=travelText>
+        <div class="creator"><%=travel._userId.username %></div>
+        <div class="title"><%=travel.title %></div>
+        <div class="description"><%=travel.description%></div>
+        <div class="travelDate"><%=travel.travelDateFormated%></div>
+        <div class="countries"><%=travel.countries%></div>
+        <!-- <div class="ribbon"></div> -->
+
+      <div>
+          <a href="/travels/<%=travel._id%>">
+            <img class="icon" src="/images/eye-w.png" alt="View details"></a>
+          <% if ((''+user._id) == (''+travels[0]._userId._id))  { %>
+          <a href="/pads/new/<%=travel._id%>"><button class="icon" value="<%=travel._id%>" class="btnAddPad"><img placeholder="Add" class="icon" src="/images/add-200-w.png" alt="Add new pad"></button></a>
+          <button class="icon" value="<%=travel._id%>" class="btnDelete"><img class="icon" src="/images/trash-640-w.png" alt=""></button>
+          <% } %>
+
+      </div>
+
+      </div>
+
+</div>
+  <% }) %>
+
+  <div>
+    <a href="/travels/new">Add new</a>
+  </div>
+</div>
+<script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+<script src="/javascripts/travels.js"></script>
