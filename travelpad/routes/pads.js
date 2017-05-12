@@ -18,7 +18,7 @@ router.get('/', (req, res, next) => {
 router.post('/', upload.single('photo'), (req, res, next) => {
   console.log(req.body);
   console.log("visible:" + req.body.visible+"-");
-  let visibility = req.body.visible ? true : false;
+  let visibility = req.body.visible;
   const newPad = new Pads( {
     title: req.body.title,
     description: req.body.description,

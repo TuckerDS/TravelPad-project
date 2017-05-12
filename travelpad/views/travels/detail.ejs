@@ -23,6 +23,7 @@
     <div class="padsContainer">
 
     <% pads.forEach( (pad) => {%>
+      <% if (user)  %>
       <div class="pads">
         <div><%=pad.title %></div>
         <div><%=pad.description %></div>
