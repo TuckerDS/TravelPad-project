@@ -1,3 +1,20 @@
+<header><div class="logo"> TravelPad</div>
+  <div class="logNav">
+<% if (user != undefined) { %>
+  <%=user.username%> /
+  <a href="/logout">Logout</a>
+<%} else {%>
+  <a href="/login">Login</a> /
+  <a href="/signup">Signup</a>
+<% } %>
+  </div>
+  <div style="clear: both;"></div>
+</header>
+<div>
+<span class="menu"><a href="/travels/new">New travel</a></span>
+<span class="menu"><a href="/travels/mytravels">My travels</a></span>
+<span class="menu"><a href="/travels">Travels List</a></span>
+</div>
 <div class="container">
   <div class="travel">
     <div class="travelText">

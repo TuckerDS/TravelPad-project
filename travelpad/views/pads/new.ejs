@@ -1,9 +1,26 @@
+<header><div class="logo"> <img src="/favicon.gif" alt=""> <span>TravelPad</span></div>
+  <div class="logNav">
+<% if (user != undefined) { %>
+  <%=user.username%> /
+  <a href="/logout">Logout</a>
+<%} else {%>
+  <a href="/login">Login</a> /
+  <a href="/signup">Signup</a>
+<% } %>
+  </div>
+  <div style="clear: both;"></div>
+</header>
+<div>
+<span class="menu"><a href="/travels/new">New travel</a></span>
+<span class="menu"><a href="/travels/mytravels">My travels</a></span>
+<span class="menu"><a href="/travels">Travels List</a></span>
+</div>
 <div class="container">
   <div class="pad">
-    <h2>New Pad</h2>
+    <div>New Pad</div>
     <form  action="/pads"  method="post" enctype="multipart/form-data">
-      <div class="field"><label for="title">Title: </label><input type="text" placeholder="Introduce a title..." name="title"></div>
-      <div class="field"><label for="description">Description: </label><input type="text" placeholder="Introduce a description..." name="description"></div>
+      <div class="field"><input type="text" placeholder="Introduce a title..." maxlength="140" name="title" required></div>
+      <div class="field"><input type="text" placeholder="Introduce a description..." maxlength="255"name="description"></div>
       <div class="field"><label for="visible">Visible: </label><input type="checkbox" name="visible" checked></div>
       <div class="field"><label for="country">Countries</label>
         <select name="country" id="country">
@@ -14,20 +31,15 @@
       </div>
       <div class="field">
         <img id="img" src="/images/camera-640-w.png" onclick="upload()" alt="hello"/>
+        <input id="filename" type="text"></input>
         <input id='camera' type="file" hidden='hidden' accept="image/*" onchange="change()" capture="camera" name="photo">
       </div>
-      <div class="field"><input id="filename" type="text"></input></div>
-      <input type="text" name="travelId" value="<%=travelId%>">
+      <div class="field"></div>
+      <input type="text" name="travelId" hidden="hidden" value="<%=travelId%>">
       <div class="field"><label for="location">Location</label>
         <div><label for="lng">Longitud: </label><input type="text" placeholder="Longitud" id="lng" name="lng"></div>
         <div><label for="lat">Latitud: </label><input type="text" placeholder="Latitud" id="lat" name="lat"></div>
       </div>
-      <style>
-        #map {
-         height: 200px;
-         width: 540px;
-        }
-     </style>
       <div id="map"></div>
       <div class="field"><button type="submit">Create new Pad</button></div>
     </form>
