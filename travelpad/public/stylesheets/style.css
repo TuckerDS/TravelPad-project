@@ -179,7 +179,7 @@ input[type=checkbox]
 .ribbon {
   display: inline-block;
   position: relative;
-  float: right;
+  float: left;
   top: 0px;
   left: 80%;
   border: 10px solid, black;
