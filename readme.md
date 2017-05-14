@@ -22,9 +22,9 @@ Un travel es como un cuaderno de viaje.
 ## Pads
 Crea de forma rápida una anotación, no pierdas el tiempo en preguntar donde estas, simplemente crea un pad geolocalizado automaticamente y ponle título, y si quieres añade una descripción más extensa y una foto, y marca si esta visita sera visible para el resto. La fecha y hora se guardará automaticamente. ;)
 
-##Iteraciones
+## Iteraciones
 
-###Iteración 1
+### Iteración 1
 - Signup, login y logout.
 - Lista de Travels.
 - CRUD de Users.
@@ -32,14 +32,14 @@ Crea de forma rápida una anotación, no pierdas el tiempo en preguntar donde es
 - CRUD de Pads.
 - Vista de información (detalle) de users, travels y pads.
 
-###Iteración 2
+### Iteración 2
 - Subir imagen a los pads, y al avatar de usuario.
 - Pads privados o públicos.
 - Geolocalización.
 - Añadir más paises.
 - Embeber web en aplicación android.
 
-###Algún día
+### Algún día
 - Añadir lista de travels favoritos.
 - Añadir más imagenes a un pad.
 - Busqueda por paises.
