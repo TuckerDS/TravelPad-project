@@ -2,7 +2,7 @@
 
 # TravelPad
 
-![TravelPad Logo](./README/TravelPad_Icon_300.png)
+![TravelPad Logo](./travelpad/public/favicon.gif)
 
 Cuaderno de viaje minimalista y rápido, donde guardar los sitios que visitas, georeferenciados, comentados e ilustrados, para volver a ellos cuando desees y compartirlo con tus amigos y otros usuarios.
 
