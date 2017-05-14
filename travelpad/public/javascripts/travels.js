@@ -15,7 +15,6 @@
 $('.btnDelete' ).click(function(e) {
   e.preventDefault();
   id = e.currentTarget.value;
-  console.log(id);
   $.ajax({
       url: '/travels/'+id,
       type: 'DELETE',

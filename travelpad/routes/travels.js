@@ -10,7 +10,6 @@ const { ensureLoggedIn }  = require('connect-ensure-login');
 
 router.get('/', ensureLoggedIn('/login'), (req, res, next) => {
   const user = req.user;
-  console.log(user);
   Travels.find({})
   .populate('_userId')
   .exec( (err, travels) => {
@@ -20,7 +19,6 @@ router.get('/', ensureLoggedIn('/login'), (req, res, next) => {
 
 router.get('/mytravels', ensureLoggedIn('/login'), (req, res, next) => {
   const user = req.user;
-  console.log(user);
   Travels.find({_userId: req.user._id})
   .populate('_userId')
   .exec( (err, travels) => {
@@ -49,9 +47,7 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
 });
 
 router.get('/new', ensureLoggedIn('/login'), (req, res) => {
-  console.log("User ID: "+req.user);
   res.render('travels/new', { countries: COUNTRIES });
-  //res.render('travels/new');
 });
 router.get('/:id', ensureLoggedIn('/login'), (req, res, next) => {
   let id = req.params.id;
@@ -70,7 +66,6 @@ router.get('/:id', ensureLoggedIn('/login'), (req, res, next) => {
         res.render('travels/detail', { travels: travels, pads: pads});
       });
     }
-
   });
 });
 
@@ -81,16 +76,12 @@ router.delete('/:id', (req, res, next) => {
     return next(err);
   } else {
     Pads.remove({'_travelId': id}).exec();
-
     //return next(res);
-
     res.status(200).send();
    //return res.redirect('/travels');
    //return res.render('/travels/show');
   }
   });
-  //res.render('travels/new');
 });
-
 
 module.exports = router;

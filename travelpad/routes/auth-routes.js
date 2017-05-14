@@ -65,6 +65,7 @@ authRoutes.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/login");
 });
+
 // Facebook authentication
 authRoutes.get("/auth/facebook", passport.authenticate("facebook"));
 authRoutes.get("/auth/facebook/callback", passport.authenticate("facebook", {
@@ -72,6 +73,7 @@ authRoutes.get("/auth/facebook/callback", passport.authenticate("facebook", {
   failureRedirect: "/"
 }));
 
+// Google authentication
 authRoutes.get("/auth/google", passport.authenticate("google", {
   scope: ["https://www.googleapis.com/auth/plus.login",
           "https://www.googleapis.com/auth/plus.profile.emails.read"]

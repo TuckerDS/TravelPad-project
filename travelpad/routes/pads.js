@@ -6,8 +6,7 @@ const ObjectId  = require('mongoose').Types.ObjectId;
 const router    = express.Router();
 const multer    = require('multer');
 let upload = multer({ dest: './public/uploads/' });
-
-//const { ensureLoggedIn }  = require('connect-ensure-login');
+const { ensureLoggedIn }  = require('connect-ensure-login');
 
 router.get('/', (req, res, next) => {
   Pads.find({}).exec( (err, pads) => {
@@ -15,9 +14,7 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.post('/', upload.single('photo'), (req, res, next) => {
-  console.log(req.body);
-  console.log("visible:" + req.body.visible+"-");
+router.post('/', upload.single('photo'), ensureLoggedIn('/login'), (req, res, next) => {
   let visibility = req.body.visible;
   const newPad = new Pads( {
     title: req.body.title,
@@ -29,44 +26,34 @@ router.post('/', upload.single('photo'), (req, res, next) => {
     pic_path: `/uploads/${req.file.filename}`,
     _travelId : req.body.travelId
   });
-  console.log(newPad);
   newPad.save( (err) => {
     if (err) {
       console.log(err);
       res.render('pads/new', { pad: newPad, countries: COUNTRIES });
     } else {
       res.redirect('/travels/'+newPad._travelId);
-      //res.redirect(`/travel/${newTravel._id}`);
     }
   });
 });
 
 router.get('/:id', (req, res) => {
-  //let travelId = req.params.id;
-  //console.log("TRAVELID " + travelId);
   res.render('pads/index');
 });
 
 router.get('/new/:id', (req, res) => {
   let travelId = req.params.id;
-  console.log("TRAVELID " + travelId);
   res.render('pads/new', { countries: COUNTRIES, travelId:travelId});
 });
 
 router.get('/delete/:id/:idTravel', (req, res, next) => {
   let id = req.params.id;
   Pads.findByIdAndRemove(id, (err, product) => {
-  if (err){
-    return next(err);
-  } else {
-    //console.log(res);
-    //return next(res);
-   return res.redirect('/travels/'+req.params.idTravel);
-   //return res.render('/travels/show');
-  }
+    if (err){
+      return next(err);
+    } else {
+     return res.redirect('/travels/'+req.params.idTravel);
+    }
   });
-  //res.render('travels/new');
 });
-
 
 module.exports = router;

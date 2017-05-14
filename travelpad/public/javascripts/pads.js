@@ -5,7 +5,7 @@ function upload(){
  }
 
 function change() {
-  alert(document.getElementById("camera").value);
+  //alert(document.getElementById("camera").value);
   document.getElementById("filename").value = document.getElementById("camera").value ;
 }
 
