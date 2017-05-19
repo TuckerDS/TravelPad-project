@@ -16,8 +16,9 @@
 <span class="menu"><a href="/travels">Travels List</a></span>
 </div>
 <div class="container">
+  <div class="travelsContainer">
   <% travels.forEach( (travel) => {%>
-    <div class="travel_list" id="<%=pad._id%>">
+    <div class="travel" id="<%=pad._id%>">
         <div class="title"><%=pad.title %></div>
         <div class="description"><%=pad.description%></div>
         <div class="travelDate"><%=pad.travelDate%></div>
@@ -32,6 +33,7 @@
 
     </div>
   <% }) %>
+  </div>
 <div>
   <a href="/pads/new">Add new</a>
 </div>

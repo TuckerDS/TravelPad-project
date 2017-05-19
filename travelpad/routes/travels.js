@@ -26,7 +26,6 @@ router.get('/mytravels', ensureLoggedIn('/login'), (req, res, next) => {
   });
 });
 
-
 router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
   const newTravel = new Travels( {
     title: req.body.title,
@@ -35,7 +34,6 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
     countries: req.body.country,
     _userId : req.user._id
   });
-
   newTravel.save( (err) => {
     if (err) {
       res.render('travels/new', { travel: newTravel, countries: COUNTRIES });
@@ -49,6 +47,7 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
 router.get('/new', ensureLoggedIn('/login'), (req, res) => {
   res.render('travels/new', { countries: COUNTRIES });
 });
+
 router.get('/:id', ensureLoggedIn('/login'), (req, res, next) => {
   let id = req.params.id;
   let tra;
@@ -78,8 +77,8 @@ router.delete('/:id', (req, res, next) => {
     Pads.remove({'_travelId': id}).exec();
     //return next(res);
     res.status(200).send();
-   //return res.redirect('/travels');
-   //return res.render('/travels/show');
+     //return res.redirect('/travels');
+     //return res.render('/travels/show');
   }
   });
 });

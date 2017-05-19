@@ -4,20 +4,21 @@ body {
   font-family: "Kalam";
   background-image: url(/images/pexels-photo_1920.jpg);
   background-size: cover;
+  background-attachment: fixed;
 }
 
 h1, h2, h3 {
-  font-family: "Kalam";
   font-weight: bold;
-  position: relative;
   bottom: 60px;
   right: 20px;
 }
 h3 { font-size: 1.4em; }
 h2 { font-size: 1.6em; }
-h2 { font-size: 1.8em; }
+h1 { font-size: 1.8em; }
 
 .container {
+  /*overflow: auto;
+  height: 600px;*/
   padding: 2% 20%;
   width: 60%;
 }
@@ -26,31 +27,67 @@ h2 { font-size: 1.8em; }
   font-family: "Kalam";
 }
 
-.logo {
-  float: left;
-}
-.logNav{
-  float: right;
+.logo { float: left; }
+.logNav { float: right; }
+
+.travelsContainer {
+  clear: both;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
-.travel_list {
+.travel, .pads {
+  display: flex;
+  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ];
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
   float:left;
   display: inline-block;
   box-sizing: content-box;
   width: 40%;
-  max-width: 300px;
-  min-width: 200px;
-  max-height: 500px;
-  min-height: 300px;
   height: 40%;
   border-radius: 3px 10px 10px 3px;
-  margin: 10px;
   padding: 10px;
+  margin: 10px;
   font-family: "Kalam";
-  background-color: rgba(0,0,0,0.7);
-  border: 2px solid black;
-  background-size:cover;
+  max-width: 300px;
+  min-width: 200px;
+  min-height: 300px;
+}
+
+.travel {
   color: #EEEEEE;
+  border: 2px solid black;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.pads {
+  border: 2px solid white;
+  background-color: rgba(255,255,255,0.7);
+}
+
+input, select, textarea, button {
+  font-family: "Kalam";
+  border-radius: 3px;
+  padding: 5px;
+  border: none;
+  font-size: 1.4em;
+}
+.menu {
+  margin: 0px 5px;
+  font-size: 1.4em;
+  text-shadow: 1px 1px 3px rgb(13,13,13);
+}
+
+.darkField {
+
+}
+
+.darkText {
+
 }
 
 .title {
@@ -61,10 +98,9 @@ h2 { font-size: 1.8em; }
 }
 
 .description {
-  border-radius: 5px;
   width: 100px;
   margin: 10px;
-  font-size: 1.2em;
+  font-size: 1.0em;
   background-color: rgba(255,255,255,0.8);
   color: rgba(0,0,0,0.8);
   padding: 10px;
@@ -76,13 +112,13 @@ h2 { font-size: 1.8em; }
   font-size: 1.2em;
 }
 
-a {
+a { color: #00B7FF; }
+
+a, button, .btnPic, #img {
   cursor: pointer;
-  color: #00B7FF;
 }
 
 .btnPic {
-  cursor: pointer;
   width: 64px;
   height: 64px;
   background-image: url(/images/camera-640-w.png);
@@ -94,8 +130,6 @@ a {
   width: 64px;
   height: 64px;
   padding: 5px;
-  cursor: pointer;
-
 }
 
 #img:hover {
@@ -103,25 +137,11 @@ a {
   border-radius: 5px;
 }
 
-label {
-  color: white;
-}
-
-input {
-  font-size: 1.4em;
-  font-family: "Kalam";
-  border-radius: 3px;
-  padding: 5px;
-}
+label { color: white; }
 
 select {
-  font-size: 1.4em;
-  font-family: "Kalam";
   color: white;
   background-color: rgba(0,0,0,0.);
-  border: 0px solid white;
-  border-radius: 3px;
-  padding: 5px;
 }
 
 header {
@@ -142,7 +162,6 @@ header span {
 }
 
 .pad {
-  font-size: 1.2em;
   color: back;
   padding: 10px;
   width: 50%;
@@ -159,24 +178,13 @@ header span {
   color: black;
   font-size: 1.2em;
 }
-.pad input {
+.pad input, select {
   width: 80%;
-  font-size: 1.2em;
   color: back;
   background-color: rgba(255,255,255,0.8);
-  border-radius: 3px;
-  border: 0px solid white;
 }
 
-.pad .field {width: 100%}
-
-.pad select {
-  font-size: 2em;
-  color: back;
-  background-color: rgba(255,255,255,0.8);
-  border-radius: 3px;
-  border: 0px solid white;
-}
+.pad .field { width: 100% }
 
 #map {
   width: 100%;
@@ -188,13 +196,8 @@ header span {
 }
 
 button {
-  font-size: 14px;
-  font-family: "Kalam";
   color: rgba(0,0,0,0.5);
   background-color: white;
-  border: 2px solid white;
-  border-radius: 3px;
-  padding: 5px;
 }
 
 input[type=checkbox]
@@ -205,6 +208,7 @@ input[type=checkbox]
 }
 
 .travel {
+  float: left;
   display: inline-block;
   border: 2px solid black;
   margin: 5% 20%;
@@ -215,29 +219,15 @@ input[type=checkbox]
 }
 
 .travelText {
-  padding:10px;
+  padding: 10px;
   width: 70%;
   float: left;
-  height:100%;
+  height: 100%;
 }
 
 .travelText input {
   color: white;
   background-color: rgba(0,0,0,0.4);
-  border: 0px solid white;
-}
-
-.ribbon {
-  display: inline-block;
-  position: relative;
-  float: left;
-  top: 0px;
-  left: 80%;
-  border: 10px solid, black;
-  background-color: black;
-  height: 100px;
-  margin-left: 70%;
-  margin-right: 10%;
 }
 
 .padsContainer {
@@ -245,26 +235,7 @@ input[type=checkbox]
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items:flex-start;
-
-}
-
-.pads {
-  box-sizing: border-box;
-  display: inline-block;
-  float: left;
-  padding: 10px;
-  border-radius: 3px 10px 10px 3px;
-  border: 2px solid white;
-  background-color: rgba(255,255,255,0.7);
-  border-radius: 3px 10px 10px 3px;
-  margin: 10px;
-  width: 40%;
-  max-width: 300px;
-  min-width: 200px;
-  max-height: 500px;
-  min-height: 300px;
-  height: 40%;
+  align-items: stretch;
 }
 
 .image {
@@ -273,8 +244,8 @@ input[type=checkbox]
   width: 200px;
   margin: 5px auto;
   border: 2px solid black;
-
 }
+
 .image img {
   width: 100%;
   width: 100%;
@@ -294,18 +265,8 @@ input[type=checkbox]
   border-radius: 5px;
 }
 
-.login {
-  font-size: 1.2em;
-}
-
-.login input {
-  padding: 3px;
-  border-radius: 3px;
-  border: none;
-  background-color: rgba(255,255,255,0.7);
-}
-
-
+.login { font-size: 1.2em; }
+.login input { background-color: rgba(255,255,255,0.7); }
 
 .login .btn {
   cursor: pointer;
@@ -313,46 +274,34 @@ input[type=checkbox]
   padding: 5px;
 }
 
-.padTitle {
-  font-size: 1.4em;
-}
-.padDescription {
-  font-size: 1.0em;
-}
-
-.local {clear:both;}
-
-.groupLocatization, .mapDiv {
-  display: inline-block;
-}
+.local { clear:both; }
+.groupLocatization, .mapDiv { display: inline-block; }
 .groupLocatization {margin-left: 5px;}
-.padCoordinates {
-  font-size: 0.8em;
-}
-.padLocalization {
-  font-size: 1.2em;
-}
+.padCoordinates { font-size: 0.8em; }
+.padLocalization { font-size: 1.2em; }
 
-.menu {
-  font-size: 1.4em;
-  padding: 3px;
-  border-radius: 3px;
-  border: none;
-  background-color: rgba(0,0,0,0.7);
-}
 
 @media all and (orientation:portrait) {
   /*Reglas CSS*/
   body {
     font-size: 10px;
     background-image: url(/images/pexels-photo_1920-ver.jpg);
+    background-attachment: fixed;
   }
   .container {
-    padding: 0% 5%;
+    padding: 0% 2%;
     width: 90%;
   }
   .pad {
     width: 100%;
+  }
+
+  .logo {
+    height: 24px;
+    clear: both;
+  }
+  .logo span {
+    font-size: 1.8em;
   }
 }
 @media all and (orientation:landscape) {

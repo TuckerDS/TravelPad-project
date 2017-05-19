@@ -12,9 +12,9 @@
 //     this.getFullList ();
 
 
-$('.btnDelete' ).click(function(e) {
+$('.btnDelete').click(function(e) {
   e.preventDefault();
-  id = e.currentTarget.value;
+  id = e.target.name;
   $.ajax({
       url: '/travels/'+id,
       type: 'DELETE',

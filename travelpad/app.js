@@ -6,12 +6,14 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+
 //Routes
 const index = require('./routes/index');
 const users = require('./routes/users');
 const travels = require('./routes/travels');
 const pads = require('./routes/pads');
 const app = express();
+
 //layouts
 const expressLayouts = require('express-ejs-layouts');
 
@@ -47,6 +49,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
 //Passport Methods
 passport.serializeUser((user, cb) => {
   cb(null, user.id);
@@ -58,6 +61,7 @@ passport.deserializeUser((id, cb) => {
     cb(null, user);
   });
 });
+
 app.use(flash());
 passport.use(new LocalStrategy({
   passReqToCallback: true
@@ -72,11 +76,11 @@ passport.use(new LocalStrategy({
     if (!bcrypt.compareSync(password, user.password)) {
       return next(null, false, { message: "Incorrect password" });
     }
-
     return next(null, user);
   });
 }));
-//Initialization
+
+//Passport Initialization
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -87,10 +91,8 @@ app.use(function(req, res, next){
   next();
 });
 
-
 const authRoutes = require("./routes/auth-routes");
 app.use('/', authRoutes);
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -98,7 +100,6 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
-
 
 app.use('/', index);
 app.use('/users', users);

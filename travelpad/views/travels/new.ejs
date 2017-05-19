@@ -1,4 +1,4 @@
-<header><div class="logo"> TravelPad</div>
+<header><div class="logo"> <img src="/favicon.gif" alt=""> <span>TravelPad</span></div>
   <div class="logNav">
 <% if (user != undefined) { %>
   <%=user.username%> /
@@ -20,16 +20,14 @@
     <div class="travelText">
       <form action="/travels"  method="post">
         <div>
-          <label for="title">Title: </label>
           <input type="text" placeholder="Introduce a title..." name="title">
         </div>
         <div>
-          <label for="description">Description: </label>
-          <input type="text" placeholder="Introduce a description..." name="description">
+          <textarea name="description" rows="7" cols="20" placeholder="Introduce a description..."></textarea>
         </div>
         <div>
           <label for="travelDate">Date: </label>
-          <input type="date" placeholder="Introduce a date.." name="travelDate" value='<%=new Date().toLocaleDateString("es-ES");%>'>
+          <input class="travelDate" type="date" placeholder="Introduce a date.." name="travelDate" value='<%=new Date().toLocaleDateString("es-ES");%>'>
         </div>
         <div>
           <label for="country">Countries</label>
@@ -40,7 +38,7 @@
           </select>
         </div>
         <div>
-          <button type="submit">Create new Travel</button>
+          <button type="submit">Save</button>
         </div>
       </form>
     </div>

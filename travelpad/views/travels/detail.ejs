@@ -10,14 +10,17 @@
   </div>
   <div style="clear: both;"></div>
 </header>
+
 <div>
-<span class="menu"><a href="/travels/new">New travel</a></span>
-<span class="menu"><a href="/travels/mytravels">My travels</a></span>
-<span class="menu"><a href="/travels">Travels List</a></span>
+  <span class="menu"><a href="/travels/new">New travel</a></span>
+  <span class="menu"><a href="/travels/mytravels">My travels</a></span>
+  <span class="menu"><a href="/travels">Travels List</a></span>
 </div>
+
 <div class="container">
+  <div class="travelContainer">
   <% travels.forEach( (travel) => {%>
-    <div class="travel_list" id="<%=travel._id%>">
+    <div class="travel" id="<%=travel._id%>">
       <div class=travelText>
         <div class="creator"><%=travel._userId.username %></div>
         <div class="title"><%=travel.title %></div>
@@ -27,15 +30,16 @@
         <div>
           <a href="/travels/<%=travel._id%>"><img class="icon" src="/images/eye-w.png" alt="View details"></a>
           <% if ((''+user._id) == (''+travels[0]._userId._id))  { %>
-          <button value="<%=travel._id%>" class="btnDelete icon"><img class="icon" src="/images/trash-640-w.png" alt="Delete"></button>
-          <a href="/pads/new/<%=travel._id%>"><button class="icon" value="<%=travel._id%>" class="btnAddPad"><img placeholder="Add" class="icon" src="/images/add-200-w.png" alt="Add new pad"></button></a>
+          <a href="/pads/new/<%=travel._id%>"><img placeholder="Add" class="icon" src="/images/add-200-w.png" alt="Add new pad"></a>
+          <a href="<%=travel._id%>"><img class="icon btnDelete" name="<%=travel._id%>" src="/images/trash-640-w.png" alt=""></a>
           <% } %>
         </div>
-        <a href="/travels/new">Create new Travel</a>
+        <!--<a href="/travels/new">Create new Travel</a>-->
       </div>
-      <div class="ribbon"></div>
+      <!--<div class="ribbon"></div>-->
     </div>
   <% }) %>
+  </div>
   <%
     if (pads) { %>
     <div class="padsContainer">
