@@ -23,7 +23,6 @@ const expressLayouts = require('express-ejs-layouts');
 //Mongoose setup
 const mongoose = require('mongoose');
 //mongoose.connect('mongodb://localhost/travelpad');
-console.log("Mi URI "+process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URI);
 
 //configure layouts
