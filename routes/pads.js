@@ -23,7 +23,7 @@ router.post('/', upload.single('photo'), ensureLoggedIn('/login'), (req, res, ne
     location: {type: "Point", coordinates: [req.body.lng, req.body.lat]},
     visible: visibility,
     pic_name: req.file ? req.file.originalname : "",
-    pic_path: req.file ? `/uploads/${req.file.filename}`: "" ,
+    pic_path: req.file ? `/uploads/${req.file.filename}`: "/uploads/empty.png" ,
     _travelId : req.body.travelId
   });
   newPad.save( (err) => {
