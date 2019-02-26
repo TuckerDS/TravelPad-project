@@ -54,12 +54,14 @@ router.get('/:id', ensureLoggedIn('/login'), (req, res, next) => {
   Travels.find({_id: id})
   .populate('_userId')
   .exec( (err, travels) => {
-    if (travels[0]._userId._id+"" == req.user._id+""){
+    console.log("_userID: ");
+    console.log(travels[0]);
+    if (travels[0]._userId._id + "" == req.user._id + ""){
       Pads.find({'_travelId': id})
       .exec( (err, pads) => {
         res.render('travels/detail', { travels: travels, pads: pads});
       });
-    }else{
+    } else {
       Pads.find({'_travelId': id, visible: true})
       .exec( (err, pads) => {
         res.render('travels/detail', { travels: travels, pads: pads});
@@ -70,17 +72,18 @@ router.get('/:id', ensureLoggedIn('/login'), (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   let id = req.params.id;
-  Travels.findByIdAndRemove({_id: id}, (err, product) => {
-  if (err){
-    return next(err);
-  } else {
-    Pads.remove({'_travelId': id}).exec();
-    //return next(res);
-    res.status(200).send();
-     //return res.redirect('/travels');
-     //return res.render('/travels/show');
-  }
+  Travels.findByIdAndRemove({_id: id}, (err, travels) => {
+    if (err){
+      console.log(err);
+    } else {
+      Pads.remove({'_travelId': id}).exec();
+      //return next(res);
+      //res.status(200).send();
+      //return res.redirect('/travels');
+    }
+
   });
+  res.redirect('/');
 });
 
 module.exports = router;

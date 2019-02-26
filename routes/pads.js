@@ -7,6 +7,7 @@ const router    = express.Router();
 const multer    = require('multer');
 let upload = multer({ dest: './public/uploads/' });
 const { ensureLoggedIn }  = require('connect-ensure-login');
+const fs = require('fs');
 
 router.get('/', (req, res, next) => {
   Pads.find({}).exec( (err, pads) => {
@@ -47,6 +48,18 @@ router.get('/new/:id', (req, res) => {
 
 router.get('/delete/:id/:idTravel', (req, res, next) => {
   let id = req.params.id;
+  //remove file from filesystem
+  Pads.findOne({_id: id}, (err, pad) => {
+    if (err) {
+      return next(err);
+    } else {
+      fs.unlink('./public'+pad.pic_path,function(err){
+        if (err) return console.log(err);
+        console.log('file deleted successfully');
+      });
+    }
+  });
+  //remove pad from database
   Pads.findByIdAndRemove(id, (err, product) => {
     if (err){
       return next(err);
